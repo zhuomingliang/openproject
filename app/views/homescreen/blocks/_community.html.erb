@@ -19,7 +19,7 @@
     <%= static_link_to :professional_support %>
   </li>
   <li>
-    <%= link_to(t('homescreen.links.newsletter'), "#{OpenProject::Static::Links.links[:newsletter][:href]}/?utm_source=unknown&utm_medium=op-instance&utm_campaign=newsletter-home-screen",
+    <%= link_to(t('homescreen.links.newsletter'), "#{OpenProject::Static::Links.links[:newsletter][:href]}/?op_edition=#{EnterpriseToken.show_banners? ? 'community-edition' : 'enterprise-edition'}&op_referrer=newsletter-home-screen",
           { aria: {label: t('homescreen.links.newsletter')},
             title: t('homescreen.links.newsletter')}) %>
   </li>
