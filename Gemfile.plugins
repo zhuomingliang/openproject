@@ -1,0 +1,4 @@
+group :opf_plugins do
+  gem "openproject-webhooks", git: "https://github.com/opf/openproject-webhooks.git", branch: "feature/outgoing" 
+end
+
