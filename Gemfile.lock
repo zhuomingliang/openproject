@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: https://github.com/opf/openproject-webhooks.git
-  revision: 45816533de9ce61cbded3ce4c36b8045e09431b3
+  revision: c8cff8b5ae78ef011c714246ff0c159da5e457c8
   branch: feature/outgoing
   specs:
     openproject-webhooks (7.4.0)
