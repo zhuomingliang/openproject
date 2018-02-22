@@ -40,6 +40,8 @@ var HappyPack = require('happypack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
+var AngularCompilerPlugin= require('@ngtools/webpack').AngularCompilerPlugin;
+
 var mode = (process.env['RAILS_ENV'] || 'production').toLowerCase();
 var production = (mode !== 'development');
 var debug_output = (!production || !!process.env['OP_FRONTEND_DEBUG_OUTPUT']);
@@ -79,8 +81,11 @@ var loaders = [
       {
         loader: 'ng-annotate-loader'
       },
+      // {
+      //   loader: 'happypack/loader?id=ts'
+      // }
       {
-        loader: 'happypack/loader?id=ts'
+        loader: '@ngtools/webpack'
       }
     ]
   },
@@ -149,24 +154,24 @@ for (var k in pathConfig.pluginNamesPaths) {
   }
 }
 
-loaders.push({
-  test: /^((?!templates\/plugin).)*\.html$/,
-  use: [
-    {
-      loader: 'ngtemplate-loader',
-      options: {
-        module: 'openproject.templates',
-        relativeTo: path.resolve(__dirname, './app')
-      }
-    },
-    {
-      loader: 'html-loader',
-      options: {
-        minimize: false
-      }
-    }
-  ]
-});
+// loaders.push({
+//   test: /^((?!templates\/plugin).)*\.html$/,
+//   use: [
+//     {
+//       loader: 'ngtemplate-loader',
+//       options: {
+//         module: 'openproject.templates',
+//         relativeTo: path.resolve(__dirname, './app')
+//       }
+//     },
+//     {
+//       loader: 'html-loader',
+//       options: {
+//         minimize: false
+//       }
+//     }
+//   ]
+// });
 
 function getWebpackMainConfig() {
   config = {
@@ -214,6 +219,12 @@ function getWebpackMainConfig() {
     },
 
     plugins: [
+      new AngularCompilerPlugin({
+        tsConfigPath: 'tsconfig.json',
+        entryModule: 'app/angular4-modules#OpenProjectModule',
+        sourceMap: true
+      }),
+
       // Add a simple fail plugin to return a status code of 2 if
       // errors are detected (this includes TS warnings)
       // It is ONLY executed when `ENV[CI]` is set or `--bail` is used.

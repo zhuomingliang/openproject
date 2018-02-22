@@ -47,7 +47,7 @@ import {WpTableHoverSync} from './wp-table-hover-sync';
 import {createScrollSync} from './wp-table-scroll-sync';
 
 @Component({
-  template: require('!!raw-loader!./wp-table.directive.html'),
+  templateUrl: './wp-table.directive.html',
   selector: 'wp-table',
   providers: [TableStateHolder]
 })

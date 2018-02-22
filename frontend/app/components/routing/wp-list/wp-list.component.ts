@@ -54,7 +54,7 @@ import {TableState} from 'core-components/wp-table/table-state/table-state';
 
 @Component({
   selector: 'wp-list',
-  template: require('!!raw-loader!./wp.list.component.html'),
+  templateUrl: './wp.list.component.html',
   providers: []
 })
 export class WorkPackagesListComponent implements OnInit, OnDestroy {

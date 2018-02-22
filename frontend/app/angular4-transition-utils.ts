@@ -27,8 +27,8 @@
 // ++
 
 import {InjectionToken} from '@angular/core';
-import {IQService, IRootScopeService, ITimeoutService} from 'angular';
 import {StateService} from '@uirouter/angularjs';
+import {IQService, IRootScopeService, ITimeoutService} from 'angular';
 
 export const $rootScopeToken = new InjectionToken<IRootScopeService>('$rootScope');
 export const $qToken = new InjectionToken<IQService>('$q');
@@ -45,18 +45,18 @@ export const halRequestToken = new InjectionToken<any>('halRequest');
 export const $httpToken = new InjectionToken<any>('$http');
 export const halResourceFactoryToken = new InjectionToken<any>('halResourceFactory');
 
-export function upgradeService(ng1InjectorName:string, providedType:any) {
+export function upgradeService(factory:(i:any) => any, providedType:any) {
   return {
     provide: providedType,
-    useFactory: (i:any) => i.get(ng1InjectorName),
+    useFactory: factory,
     deps: ['$injector']
   };
 }
 
-export function upgradeServiceWithToken(ng1InjectorName:string, token:InjectionToken<any>) {
+export function upgradeServiceWithToken(factory:(i:any) => any, token:InjectionToken<any>) {
   return {
     provide: token,
-    useFactory: (i:any) => i.get(ng1InjectorName),
+    useFactory: factory,
     deps: ['$injector']
   };
 }

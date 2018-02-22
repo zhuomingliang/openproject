@@ -39,7 +39,7 @@ import {PaginationService} from 'core-components/table-pagination/pagination-ser
 import {downgradeComponent} from '@angular/upgrade/static';
 
 @Component({
-  template: require('!!raw-loader!core-components/table-pagination/table-pagination.component.html')
+  templateUrl: '../../table-pagination/table-pagination.component.html'
 })
 export class WorkPackageTablePaginationComponent extends TablePaginationComponent implements OnDestroy {
   constructor(protected paginationService:PaginationService,

@@ -36,6 +36,7 @@ import {WorkPackageCacheService} from 'core-components/work-packages/work-packag
 import {WorkPackageNotificationService} from 'core-components/wp-edit/wp-notification.service';
 
 interface CustomActionLink {
+  name:string;
   href:string;
   title:string;
   method:string;
@@ -43,7 +44,7 @@ interface CustomActionLink {
 
 @Component({
   selector: 'wp-custom-action',
-  template: require('!!raw-loader!./wp-custom-action.component.html')
+  templateUrl: './wp-custom-action.component.html'
 })
 export class WpCustomActionComponent {
 
